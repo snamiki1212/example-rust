@@ -1,3 +1,6 @@
+extern crate regex;
+use regex::Regex;
+
 use std::fs::File;
 use std::io::{BufReader, BufRead};
 use std::env;
@@ -7,6 +10,21 @@ fn usage() {
 }
 
 fn main() {
+    let pattern = match env::args().nth(1) {
+        Some(pattern) => pattern,
+        None => {
+            usage();
+            return;
+        }
+    };
+    let reg = match Regex::new(&pattern) {
+        Ok(reg) => reg,
+        Err(e) => {
+            println!("invalid regexp {}: {}", pattern ,e);
+            return;
+        }
+    };
+
     let filename = match env::args().nth(2) {
         Some(filename) => filename,
         None => {
@@ -33,6 +51,9 @@ fn main() {
                 return;
             }
         };
-        println!("{}", line);
+        if reg.is_match(&line) {
+            println!("{}", line);
+        }
+
     }
 }
