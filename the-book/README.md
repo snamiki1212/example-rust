@@ -28,6 +28,16 @@
 - mut vs shadowing
   - mut：型の変更ができない
   - shadowing：型の変更もできる
+- signed/unsigned
+  - i32 / f64 がとりあえずのベターな選択
+- 配列とベクタ
+  - 配列：固定長のケース（const系のみ）
+  - ベクタ：それ以外の可変のすべてのケース。
+- 式と文
+  - 関数末尾にセミコロンがないとreturnされる。
+  - 式は終端にセミコロンが、ない。
+  - 文は終端にセミコロンが、ある。
+  - 文は値を返さない。式は値を返す
 
 
-次：https://doc.rust-jp.rs/book/second-edition/ch03-02-data-types.html
+次：https://doc.rust-jp.rs/book/second-edition/ch03-04-comments.html
