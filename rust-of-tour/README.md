@@ -1,4 +1,6 @@
+
 - [Rust ツアー - Let's go on an adventure!](https://tourofrust.com/chapter_2_ja.html)
+- 途中まで読んでた。０＝＞１としての内容はかなり良い。構文レベルで１つずつ理解できる。ただ、そもそも英語でわざわざ学ぶ必要なくね？ってなって教材を切り替えた。（=> en-japan
 
 ## 1
 
