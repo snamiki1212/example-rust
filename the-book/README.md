@@ -22,3 +22,12 @@
     // => OK_NG_OK
   }
   ```
+
+## 3
+
+- mut vs shadowing
+  - mut：型の変更ができない
+  - shadowing：型の変更もできる
+
+
+次：https://doc.rust-jp.rs/book/second-edition/ch03-02-data-types.html
