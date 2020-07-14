@@ -9,7 +9,8 @@ MEMO
 - `mut`は「変数」につく属性。letみたいな宣言子につくわけでない。`let mut x = 2;`
 - `&[]` : 配列への参照。sliceとも呼ぶ。
 - `&str`：文字列への参照。別名なし。
-- mutなrefは２つ以上借用できない。
-- immuなrefはmultiにcreate可能
-- Mut/immuでrefをそれぞれ持てれない。
-
+- ref safe制限
+  - mutなrefは２つ以上借用できない。
+  - immuなrefはmultiにcreate可能
+  - Mut/immuでrefをそれぞれ持てれない。
+- rustには継承がなく、トレイトで実現

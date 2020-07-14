@@ -20,7 +20,7 @@
 
 ## 4
 
-- generic は turbofish にて型宣言
+- generic は turbofish にて型宣言 `::<>`
 - Rust には null がない。struct で None を定義はできるで。
 - モナドやん。
 - Option 型ってので、None か Some(T)かの maybe 的なのを作れる。
