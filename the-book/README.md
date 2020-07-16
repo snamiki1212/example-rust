@@ -120,20 +120,26 @@ fn func2(x: &i32) {
 ## 6
 
 - enum列挙子
-  - enum 列挙子は値。ただ、特有の値でstringとかではない。あくまで、同一enum同士で比較などができるだけぽい。
+  - enum の列挙しているのは値。ただ、特有の値でstringとかではない。あくまで、同一enum同士で比較などができるだけぽい。
     ```rust
+      #[derive(Debug)]
       enum Type {
         User,
         Admin
       }
+
+      let t = Type::User;
+      println!("{:?}", t); // => User
     ```
-  - 値も付与できる。型が違っててもOK。
+  - 列挙子として型も付与できる。型が違っててもOK。
     ```rust
       enum Type {
         yen(i32),
         daller(f32),
       }
     ```
+  - enumで列挙子つきで、多種に定義することは、イコールstructで細かく定義してるのと同義。
+  - enum にもimplでメソッドを定義できる
 ## 7
 ## 8
 ## 9
