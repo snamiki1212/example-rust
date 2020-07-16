@@ -149,9 +149,13 @@ fn func2(x: &i32) {
   - 特定のmatchのパターンに対する糖衣構文。
   - １つの値にしかmatchしないケース⇒if_let記法
   - １つの値へのmatchか、それ以外のケース⇒if-let-else記法
-  - 
+  
 ## 7
-
+- module
+  - `mod` でモジュール化する。
+  - `mod xxx;` だと、xxx.rsを見に行く。xxx.rsではmodでwrapしないでOK。
+- ファイル
+  - `mod.rs` / `main.rs` / `lib.rs`
 
 ## 8
 ## 9
