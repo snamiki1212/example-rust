@@ -171,4 +171,4 @@ fn func2(x: &i32) {
 ## 19
 
 ## 
-次：https://doc.rust-jp.rs/book/second-edition/ch03-04-comments.html
+次：https://doc.rust-jp.rs/book/second-edition/ch07-03-importing-names-with-use.html
