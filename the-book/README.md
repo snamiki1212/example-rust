@@ -119,8 +119,21 @@ fn func2(x: &i32) {
 
 ## 6
 
-- enum 列挙子は値。ただ、特有の値でstringとかではない。あくまで、同一enum同士で比較などができるだけぽい。
-
+- enum列挙子
+  - enum 列挙子は値。ただ、特有の値でstringとかではない。あくまで、同一enum同士で比較などができるだけぽい。
+    ```rust
+      enum Type {
+        User,
+        Admin
+      }
+    ```
+  - 値も付与できる。型が違っててもOK。
+    ```rust
+      enum Type {
+        yen(i32),
+        daller(f32),
+      }
+    ```
 ## 7
 ## 8
 ## 9
