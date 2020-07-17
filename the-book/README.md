@@ -187,6 +187,20 @@ fn func2(x: &i32) {
   - Rustの標準ライブラリにStringがある
   - Rustの標準ライブラリにその他のOsString、CStringなどがある。
   - 規則：string＝所有権有り、str＝借用されたバージョン。
+  - idxでアクセスは良くない。人間の可読文字数ではなくて、UTFの処理区分で区切られてるから。２つの配列要素をまたぐデータもあり、そこでデータを切ってアクセスするとpanicになる。
+- ハッシュマップ
+  - RustにおけるHashMapは連想配列のこと。
+  ```rust
+  use std::collections::HashMap;
+  // 
+  let mut map = HashMap::new();
+  map.insert(key, value);
+  map.get(key); // => Option(&value)
+
+  // keyのvalueが存在するかのチェッカーがentryで、そのモナドな型のEntry
+  map.entry(key) // Entry(...)
+    .or_insert(value) // 値がなければ、これでvalueが挿入
+  ```
 
 ## 9
 ## 10
