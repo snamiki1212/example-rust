@@ -154,10 +154,40 @@ fn func2(x: &i32) {
 - module
   - `mod` でモジュール化する。
   - `mod xxx;` だと、xxx.rsを見に行く。xxx.rsではmodでwrapしないでOK。
+  - `use`で使用する。
+    - `super`で１つ上の階層にあがる。
+  
 - ファイル
   - `mod.rs` / `main.rs` / `lib.rs`
 
 ## 8
+
+- Vector
+  - feature
+    - ヒープリスト
+    - 同一の型を扱う。
+    - 別の型を扱いたいなら、enumで定義したものを型として扱う
+  - 作成
+    - `let v: Vec<i32> = Vec::from([1, 2, 3]);`
+    - = `let v = vec![1, 2, 3];` ( マクロが用意されてる。型も推論される。)
+  - 更新
+    - `let mut v = vec![1, 2, 3];`
+    - `v.push(2);`
+  - 取得
+    - 添字で取るか、.getで取るか
+    - `let v = v[2]; // => v = 2 or panic when compiling`
+    - `let v = v.get(2); // => v = Option(2) or None`
+  - 複数の型
+    - enumで型を定義して、その型のベクタを作る。
+    - `enum T { I(i32), F(f64), S(String)};`
+    - `let v = vec![T::I(2), T::F(2.2), T::S(String::from("OK"))];`
+- 文字列
+  - Rust界隈での文字列は、Stringと&strのことを指す（すでにややこしい・・・）
+  - Rustのコアにはstr/&strしかない。
+  - Rustの標準ライブラリにStringがある
+  - Rustの標準ライブラリにその他のOsString、CStringなどがある。
+  - 規則：string＝所有権有り、str＝借用されたバージョン。
+
 ## 9
 ## 10
 ## 11
