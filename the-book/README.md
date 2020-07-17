@@ -203,6 +203,20 @@ fn func2(x: &i32) {
   ```
 
 ## 9
+
+- error
+  - エラー
+    - panic / Resultモナドのどちらか
+    - matchガードと呼ばれる、match条件のenhanceな構文もあり。
+    - matchの &は参照にマッチして、refは値にマッチしつつ値を返す
+  - matchのネストが深くなることがあるので、便利な関数がある
+    - `unwrap`：Okならそのまま、Errならpanicする。`fun.unwrap();`
+    - `expect`：`unwrap`でエラーメッセージを引数に持たせる。あれ、unwrapいらなくない？禁止したほうが良さげ。
+  - エラーの委譲(delegation)
+    - 自分で作った関数の返り値を値ではなくてResultにして、実際の値はOkかErrを返すようにすればよい。
+    - これを便利に書くための演算子が`?`。(ex) `let mut f = File::open("hello.txt")?`
+    - これで、errorならquick return。Ok(v)ならvになる。
+
 ## 10
 ## 11
 ## 12
