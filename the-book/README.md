@@ -218,6 +218,11 @@ fn func2(x: &i32) {
     - これで、errorならquick return。Ok(v)ならvになる。
 
 ## 10
+- trait
+  - interface/abstractのようなもの。
+  - インターフェース：`pub trait <trait> { fn <xxx> -> () {...} }`
+  - 実装：`impl <trait> for <struct> {...}`
+  - fnのオーバーライドが可能
 ## 11
 ## 12
 ## 13
