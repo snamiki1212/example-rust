@@ -232,7 +232,16 @@ fn func2(x: &i32) {
   - where記法
     - `+`でトレイトをつなげたり、トレイと境界が多いと可読性が悪いので、そういう場合はwhere記法で記載する
     - 記法：`fn foo<T, U>(t: T, u: U) -> i32 where T: Display + Clone, U: Clone + Debug {...}`
-
+  - impl時の型にてトレイトをしているすることで、トレイトごとに参照するメソッドを振り分けることができる
+    ```rust
+    struct Animal {}
+    impl<T: Dog + Cat> Animal {
+      fn walk(){...}
+     }
+    impl<T: Bird> Animal {
+      fn fly(){...}
+    }
+    ```
 ## 11
 ## 12
 ## 13
