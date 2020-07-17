@@ -223,6 +223,16 @@ fn func2(x: &i32) {
   - インターフェース：`pub trait <trait> { fn <xxx> -> () {...} }`
   - 実装：`impl <trait> for <struct> {...}`
   - fnのオーバーライドが可能
+- trait境界(trait bound)
+  - ジェネリクスにトレイトを指定することで、「引数がそのトレイトを実装していないといけない」という制約ができる
+  - （普通のジェネリクス：`fn foo<T>(item: T) -> T { return item; }`）
+  - 普通の記法
+    - trait境界：`fn foo<T: ThisIsTrait>(item: T) -> T { return item; }`
+    - 記法：`<型変数: トレイト名>`、`<T: Display + Clone >`
+  - where記法
+    - `+`でトレイトをつなげたり、トレイと境界が多いと可読性が悪いので、そういう場合はwhere記法で記載する
+    - 記法：`fn foo<T, U>(t: T, u: U) -> i32 where T: Display + Clone, U: Clone + Debug {...}`
+
 ## 11
 ## 12
 ## 13
