@@ -44,3 +44,13 @@ fn traits() {
 
   assert_eq!(18, sum);
 }
+
+///
+/// # Examples
+/// ```
+/// let five = 5;
+/// assert_eq!(6, iter::add_one(5));
+/// ```
+pub fn add_one(x: i32) -> i32 {
+  x + 1
+}
