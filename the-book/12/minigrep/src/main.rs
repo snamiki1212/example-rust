@@ -1,6 +1,7 @@
 use std::env;
 use std::fs::File;
 use std::io::prelude::*;
+use std::error::Error;
 
 use std::process;
 
@@ -11,18 +12,23 @@ fn main() {
         println!("problem parsing arguments: {}", err);
         process::exit(1);
     });
+
     println!("Searching for {}", config.query);
     println!("in file {}", config.filename);
     // --
 
-    run(config)
+    if let Err(e) = run(config) {
+        println!("Application error: {}", e);
+        process::exit(1);
+    }
 }
 
-fn run(config: Config) {
-    let mut f = File::open(config.filename).expect("file not found");
+fn run(config: Config) -> Result<(), Box<dyn Error>>{
+    let mut f = File::open(config.filename)?;
     let mut contents = String::new();
-    f.read_to_string(&mut contents).expect("something went wrong reading the file");
+    f.read_to_string(&mut contents)?;
     println!("Write text: \n{}", contents);
+    Ok(())
 }
 
 struct Config {
