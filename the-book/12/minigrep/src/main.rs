@@ -24,10 +24,12 @@ struct Config {
 }
 impl Config {
     fn new(args: &[String]) -> Self {
+        if args.len() < 3 {
+            panic!("not enough arguments");
+        }
         let query = args[1].clone();
         let filename = args[2].clone();
 
-        let config = Config { query, filename };
-        config
+        Config { query, filename }
     }
 }
