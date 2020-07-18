@@ -15,11 +15,13 @@ fn main() {
     println!("in file {}", config.filename);
     // --
 
+    run(config)
+}
+
+fn run(config: Config) {
     let mut f = File::open(config.filename).expect("file not found");
     let mut contents = String::new();
     f.read_to_string(&mut contents).expect("something went wrong reading the file");
-
-
     println!("Write text: \n{}", contents);
 }
 
