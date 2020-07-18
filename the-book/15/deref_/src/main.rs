@@ -1,11 +1,32 @@
 fn main() {
-    let m = MyBox::new(String::from("Rust"));
-    hello(&m);
+    {
+        let c = CustomSmartPointer { data: String::from("My studd" )};
+        let d = CustomSmartPointer { data: String::from("other studd" )};
+        println!("created and c is {:?}", c);
+    }
+    println!("next");
+
+    // -
+    // let m = MyBox::new(String::from("Rust"));
+    // hello(&m);
+    // --
+
     // let x = 5;
     // let y = MyBox::new(x);
 
     // assert_eq!(5, x);
     // assert_eq!(5, *y);
+}
+
+#[derive(Debug)]
+struct CustomSmartPointer {
+    data: String,
+}
+
+impl Drop for CustomSmartPointer {
+    fn drop(&mut self){
+        println!("Dropping data {}", self.data);
+    }
 }
 
 fn hello(name: &str) {
