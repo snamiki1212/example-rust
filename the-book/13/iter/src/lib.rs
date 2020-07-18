@@ -4,7 +4,7 @@ struct Counter {
 
 impl Counter {
   fn new() -> Counter {
-    Counter {count: 0}
+    Counter { count: 0 }
   }
 }
 
@@ -15,14 +15,14 @@ impl Iterator for Counter {
 
     if self.count < 6 {
       Some(self.count)
-    } else{
+    } else {
       None
     }
   }
 }
 
 #[test]
-fn calling_next_directly(){
+fn calling_next_directly() {
   let mut counter = Counter::new();
 
   assert_eq!(counter.next(), Some(1));
@@ -32,5 +32,15 @@ fn calling_next_directly(){
   assert_eq!(counter.next(), Some(5));
 
   assert_eq!(counter.next(), None);
+}
 
+#[test]
+fn traits() {
+  let sum: u32 = Counter::new()
+    .zip(Counter::new().skip(1))
+    .map(|(a, b)| a * b)
+    .filter(|x| x % 3 == 0)
+    .sum();
+
+  assert_eq!(18, sum);
 }
