@@ -355,4 +355,4 @@ fn func2(x: &i32) {
 ## 19
 
 ## 
-次：https://doc.rust-jp.rs/book/second-edition/ch07-03-importing-names-with-use.html
+次：https://doc.rust-jp.rs/book/second-edition/ch16-01-threads.html#spawn%E3%81%A7%E6%96%B0%E8%A6%8F%E3%82%B9%E3%83%AC%E3%83%83%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B
