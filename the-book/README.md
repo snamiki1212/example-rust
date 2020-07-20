@@ -350,6 +350,22 @@ fn func2(x: &i32) {
   て、M個のグリーンスレッドvsN個のOSスレッドで、MとNはイコールでない。
     - Erlang: ErlangVM上に複数のプロセスというグリーンスレッド。
     - Go: １つのOSスレッドにて、複数のgo-routineというグリーンスレッド
+- thread
+  - spawn
+    - thread::spawnの戻り値はJoinHandle型
+    - `let handle = thread::spawn(...);`
+  - join
+    - handle.join()で、スレッド処理が終了するまで待つ。asyncのawaitみたいに。
+  - move
+    - threadの中のクロージャにて、外界の値をキャプチャして使う場合は、所有権をmoveしないといけない。メインスレッドにて先にそのキャプチャした値の所有権がdropしてるかもしれないので。
+    - `let handle = thread::spawn(move || { ... });`
+  - channel
+    - チャンネル：川
+    - 転送機(tx)：川にデータを流す。`tx.send(...)`
+    - 受信機(rx)：川からデータを受け取る。`tr.recv()`
+    - 転送・受信機の「どちらか」がドロップ＝チャネルが閉じる
+    - mpsc: multiple-producer / single-consumer
+    - 
 ## 17
 ## 18
 ## 19
