@@ -1,6 +1,7 @@
 use rusty_blog::Post;
 
 fn main(){
-  let p = Post::new();
-  println!("POST {}", p)
+  let post = Post::new();
+  post.add_text("hey");
+  assert_eq!("", post.content()); // << compile errorで保証
 }
