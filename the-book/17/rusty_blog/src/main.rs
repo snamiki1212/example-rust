@@ -1,7 +1,13 @@
 use rusty_blog::Post;
 
 fn main(){
-  let post = Post::new();
+  let mut post = Post::new();
+
   post.add_text("hey");
-  assert_eq!("", post.content()); // << compile errorで保証
+
+  let post = post.request_review();
+
+  let post = post.approve();
+
+  assert_eq!("hey", post.content());
 }
