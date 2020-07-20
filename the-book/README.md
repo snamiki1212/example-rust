@@ -361,7 +361,7 @@ fn func2(x: &i32) {
     - `let handle = thread::spawn(move || { ... });`
   - channel
     - チャンネル：川
-    - 転送機(tx)：川にデータを流す。`tx.send(...)`
+    - 転送機(tx)：川にデータを流す。`tx.send()`
     - 受信機(rx)：川からデータを受け取る。`tr.recv()`
     - 転送・受信機の「どちらか」がドロップ＝チャネルが閉じる
     - mpsc: multiple-producer / single-consumer
