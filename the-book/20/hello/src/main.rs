@@ -1,3 +1,4 @@
+use std::fs;
 use std::io::prelude::*;
 use std::net::TcpListener;
 use std::net::TcpStream;
@@ -13,13 +14,18 @@ fn main() {
 
 fn handle_connection(mut stream: TcpStream) {
     let mut buffer = [0; 512];
-
     stream.read(&mut buffer).unwrap();
 
-    let response = "AHTTP/1.1 s200 OK\r\n\r\n";
+    let contents = fs::read_to_string("index.html").expect("cannot open file");
 
-    // println!("Request {}", String::from_utf8_lossy(&buffer[..]));
-    stream.write(response.as_bytes()).unwrap();
+    let response = format!(
+        "HTTP/1.1 200 OK\r\nContent-Length: {}\r\n\r\n{}",
+        contents.len(),
+        contents
+    );
+
+    stream
+        .write(response.as_bytes())
+        .expect("faile to write into stream data");
     stream.flush().unwrap();
-
 }
