@@ -18,24 +18,29 @@ fn handle_connection(mut stream: TcpStream) {
 
     let get = b"GET / HTTP/1.1\r\n";
 
-    if buffer.starts_with(get) {
+    let (status_line, contents) = if buffer.starts_with(get) {
         let contents = fs::read_to_string("index.html").expect("cannot open file");
-
-        let response = format!(
-            "HTTP/1.1 200 OK\r\nContent-Length: {}\r\n\r\n{}",
-            contents.len(),
-            contents
+        let status_line = format!(
+            "HTTP/1.1 200 OK\r\nContent-Length: {}\r\n\r\n",
+            contents.len()
         );
-        stream
-            .write(response.as_bytes())
-            .expect("faile to write into stream data");
-        stream.flush().unwrap();
+        (status_line, contents)
     } else {
-        let contents = fs::read_to_string("404.html").unwrap();
+        let contents = fs::read_to_string("404.html").expect("cannot open file");
+        let status_line = format!(
+            "HTTP/1.1 404 Not Found\r\nContent-Length: {}\r\n\r\n",
+            contents.len()
+        );
+        (status_line, contents)
+    };
 
-        let response = format!("HTTP/1.1 404 Not Found\r\nContent-Length: {}\r\n\r\n{}", contents.len(), contents);
-
-        stream.write(response.as_bytes()).unwrap();
-        stream.flush().unwrap();
-    }
+    let response = format!(
+        "{}{}",
+        status_line,
+        contents
+    );
+    stream
+        .write(response.as_bytes())
+        .expect("faile to write into stream data");
+    stream.flush().unwrap();
 }
