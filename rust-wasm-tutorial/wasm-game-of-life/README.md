@@ -71,7 +71,7 @@ wasm-pack publish
 ## MEMO
 
 - `/pkg`
-  - wasmをbuildした結果のファイル群。
+  - Rustをbuildしてwasm化した結果のファイル群。JSと結合用のGlueな.jsもあり、これも合わせて自動生成される。
   - ビルドしたwasmファイルをコールしたいので、JSから呼べるためのインターフェイスAPIを.jsと.d.tsで用意されてる。結果として下記のような感じで呼び出される。
   - App.js >>..call..>> wasm_xxx.js >>..import..>> wasm_xxx.wasm
   - この配下をまるっとnpmパッケージとしてデプロイできる。
