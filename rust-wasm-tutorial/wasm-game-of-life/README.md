@@ -67,3 +67,11 @@ wasm-pack publish
   for logging panic messages to the developer console.
 * [`wee_alloc`](https://github.com/rustwasm/wee_alloc), an allocator optimized
   for small code size.
+
+## MEMO
+
+- `/pkg`
+  - wasmをbuildした結果のファイル群。
+  - ビルドしたwasmファイルをコールしたいので、JSから呼べるためのインターフェイスAPIを.jsと.d.tsで用意されてる。結果として下記のような感じで呼び出される。
+  - App.js >>..call..>> wasm_xxx.js >>..import..>> wasm_xxx.wasm
+  - この配下をまるっとnpmパッケージとしてデプロイできる。
