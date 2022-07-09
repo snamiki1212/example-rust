@@ -157,11 +157,12 @@ fn func2(x: &i32) {
 
 ## 7
 
+- パッケージ >> クレート >> モジュール >> func/enum...
 - module
-  - `mod` でモジュール化する。
-  - `mod xxx;` だと、xxx.rs を見に行く。xxx.rs では mod で wrap しないで OK。
-  - `use`で使用する。
-    - `super`で１つ上の階層にあがる。
+  - `mod` シンタックスでモジュール化する。
+  - `mod xxx;` を宣言すると、xxx.rs を見に行く。xxx.rs では mod で wrap しないで OK。
+  - `use`で現在のスコープにエイリアスとして呼び込む。
+  - `super`で１つ上の階層にあがる。
 - ファイル
   - `mod.rs` / `main.rs` / `lib.rs`
 
@@ -228,15 +229,16 @@ fn func2(x: &i32) {
 
 - trait
   - interface/abstract のようなもの。
-  - インターフェース：`pub trait <trait> { fn <xxx> -> () {...} }`
-  - 実装：`impl <trait> for <struct> {...}`
+    - 定義：`pub trait <trait_name> { fn <xxx> -> () {...} }` // 実装しても良いし、Interface だけでも良い。
+    - 実装：`impl <trait_name> for <struct_name> {...}`
   - fn のオーバーライドが可能
-- trait 境界(trait bound)
-  - ジェネリクスにトレイトを指定することで、「引数がそのトレイトを実装していないといけない」という制約ができる
-  - （普通のジェネリクス：`fn foo<T>(item: T) -> T { return item; }`）
-  - 普通の記法
-    - trait 境界：`fn foo<T: ThisIsTrait>(item: T) -> T { return item; }`
-    - 記法：`<型変数: トレイト名>`、`<T: Display + Clone >`
+- trait: 引数
+  - 引数の型にて struct を定義することがある。e.g.`fn say(user: User) {...}`
+  - 「この struct が trait を実装していること」を型条件に入れることができる。
+  - e.g.`fn say(userHasActions: &impl Actions) {}` // Actions トレイトを実装してること
+  - この記法だとシンプルなケースではなく複雑なケースに対応できないので、その場合はジェネリクスを使った trait 境界構文を使う。
+- trait 境界構文(trait bound)
+  - trait 境界 e.g. `fn foo<T: ThisIsTrait>(item1: T, item2: T) -> T { ... }`
   - where 記法
     - `+`でトレイトをつなげたり、トレイと境界が多いと可読性が悪いので、そういう場合は where 記法で記載する
     - 記法：`fn foo<T, U>(t: T, u: U) -> i32 where T: Display + Clone, U: Clone + Debug {...}`
