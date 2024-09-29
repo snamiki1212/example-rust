@@ -3,6 +3,11 @@ rustup target add wasm32-unknown-unknown
 
 wasm-pack build
 cd www; npm install; cd ../;
+
+# NOTE: Use Node v16.x.x. to workaround for https://stackoverflow.com/questions/69692842/error-message-error0308010cdigital-envelope-routinesunsupported
+
+# Run
+cd www; npm run start; cd ../;
 ```
 
 ```zsh
