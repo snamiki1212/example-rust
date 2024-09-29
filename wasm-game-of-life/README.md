@@ -2,6 +2,12 @@
 rustup target add wasm32-unknown-unknown
 
 wasm-pack build
+cd www; npm install; cd ../;
+```
+
+```zsh
+/www # created by `create-wasm-app`
+/pkg # build by `wasm-pack`
 ```
 
 ---
